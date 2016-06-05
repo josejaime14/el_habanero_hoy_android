@@ -1,6 +1,7 @@
 package habanerohoy.hackbanero.com.elhabanerohoy;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.util.DebugUtils;
@@ -26,6 +27,8 @@ import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -71,9 +74,6 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-
-        
-
 
     }
 
@@ -129,8 +129,12 @@ public class MainActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+
+            SharedPreferences prefs = getActivity().getSharedPreferences("Preferencias",Context.MODE_PRIVATE);
+            String username = prefs.getString("nombre", "Usuario");
+
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+            textView.setText("Hola " + username);
             return rootView;
         }
     }

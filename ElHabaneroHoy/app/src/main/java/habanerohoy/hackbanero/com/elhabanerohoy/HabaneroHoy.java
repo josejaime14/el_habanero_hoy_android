@@ -3,6 +3,7 @@ package habanerohoy.hackbanero.com.elhabanerohoy;
 import android.app.Application;
 import android.util.Log;
 
+import com.facebook.FacebookSdk;
 import com.parse.Parse;
 
 /**
@@ -23,5 +24,6 @@ public class HabaneroHoy extends Application {
         .build()
         );
 
+        FacebookSdk.sdkInitialize(getApplicationContext());
     }
 }

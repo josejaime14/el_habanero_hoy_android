@@ -1,9 +1,16 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        realese_config {
+            keyAlias 'baktunlabs'
+            keyPassword 'baktun14'
+            storeFile file('/Users/jaime/Documents/unity/elhabanerohoy/baktunlabs.keystore')
+            storePassword 'baktun14'
+        }
+    }
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
-
     defaultConfig {
         applicationId "habanerohoy.hackbanero.com.elhabanerohoy"
         minSdkVersion 16
@@ -15,6 +22,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.realese_config
         }
     }
 }
@@ -26,4 +34,5 @@ dependencies {
     compile 'com.android.support:design:23.3.0'
     compile 'com.parse.bolts:bolts-android:1.+'
     compile 'com.parse:parse-android:1.+'
+    compile 'com.facebook.android:facebook-android-sdk:4.+'
 }
